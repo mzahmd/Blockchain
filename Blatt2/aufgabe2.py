@@ -1,4 +1,4 @@
-# xi+1 = (a  xi + b) mod m
+# xi+1 = (a * xi + b) mod m
 # x0 (= seed)
 
 def lin_kon(seed, a, b, m, n):
