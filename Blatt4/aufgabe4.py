@@ -5,28 +5,25 @@ from hashlib import sha256
 class Block:
     time = datetime.now()
 
-    def __init__(self, transaction, previous_hash):
+    def __init__(self, transaction, previous_hash, nonce=0):
         self.transaction = transaction
         self.previous_hash = previous_hash
-        self.nonce = 0
+        self.nonce = nonce
         self.timestamp = datetime.now()
         self.hash = generate_hash(self)
 
     def print_block(self):
-        print(self.transaction)
-        print(self.previous_hash)
-        print(self.nonce)
         print(self.timestamp)
+        print(self.transaction)
+        print(self.hash)
 
 
 def generate_hash(self):
-    transaction = str(self.transaction)
-    previous_hash = str(self.previous_hash)
-    nonce = str(self.nonce)
-    my_str = transaction + previous_hash + nonce
-    sha256(sha256(my_str.encode('utf-8')).hexdigest())
+    my_str = str(self.timestamp) + str(self.transaction) + str(self.previous_hash) + str(self.nonce)
+    hash_str = sha256(my_str.encode()).hexdigest()
+    return hash_str
 
 
-b = Block(12, 23)
-print(b)
+b = Block(12, 0)
+print(generate_hash(b))
 

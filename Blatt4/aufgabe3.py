@@ -1,21 +1,20 @@
 from datetime import datetime
 
+print(datetime.now())
+
 
 class Block:
-    time = datetime.now()
 
-    def __init__(self, transaction, previous_hash):
+    def __init__(self, transaction, previous_hash, nonce=0):
         self.transaction = transaction
         self.previous_hash = previous_hash
-        self.nonce = 0
+        self.nonce = nonce
         self.timestamp = datetime.now()
 
     def print_block(self):
-        print(self.transaction)
-        print(self.previous_hash)
-        print(self.nonce)
         print(self.timestamp)
+        print(self.transaction)
 
 
-b = Block(100, 20)
-
+b = Block(100, 0)
+b.print_block()
