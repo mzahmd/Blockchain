@@ -1,6 +1,16 @@
-import hashlib
+from hashlib import md5
 
-result = hashlib.md5(b'A80')
+a_str = "A"
+found = False
+num = 0
+while not found:
+    hash_str = a_str + str(num)
+    result = md5(hash_str.encode()).hexdigest()
+    nonce = result[:4]
+    num = num + 1
+    # print(nonce)
+    if nonce == "0000":
+        found = True
+        print("My number: " + str(num))
+        print(result)
 
-print("The byte equivalent of hash is : ", end="")
-print(result)
