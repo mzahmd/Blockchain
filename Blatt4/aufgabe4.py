@@ -10,20 +10,19 @@ class Block:
         self.previous_hash = previous_hash
         self.nonce = nonce
         self.timestamp = datetime.now()
-        self.hash = generate_hash(self)
+        self.hash = self.generate_hash()
 
     def print_block(self):
         print(self.timestamp)
         print(self.transaction)
         print(self.hash)
 
-
-def generate_hash(self):
-    my_str = str(self.timestamp) + str(self.transaction) + str(self.previous_hash) + str(self.nonce)
-    hash_str = sha256(my_str.encode()).hexdigest()
-    return hash_str
+    def generate_hash(self):
+        my_str = str(self.timestamp) + str(self.transaction) + str(self.previous_hash) + str(self.nonce)
+        hash_str = sha256(my_str.encode()).hexdigest()
+        return hash_str
 
 
 b = Block(12, 0)
-print(generate_hash(b))
+print(b.hash)
 
